@@ -12,8 +12,14 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-img {
+.rullakuvake {
     display: inline-block;
     width: 100px;
     height: 137px;
+}
+
+.voittokuvake {
+    display: inline-block;
+    width: 30px;
+    height: 40px;
 }
