@@ -7,6 +7,11 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+#rullat {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 img {
     display: inline-block;
     width: 100px;
