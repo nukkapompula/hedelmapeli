@@ -5,26 +5,37 @@ body {
     line-height: 0.0;
     letter-spacing: 2px;
     font-weight: lighter;
-}
-
-h1 {
-    text-align: center;
-    font-size: 300%;
-    font-weight: lighter;
+    margin: 4px;
 }
 
 input {
-    max-width: 60px;
+    max-width: 76px;
+    font-family: Playbill, Arial;
+    font-size: 100%;
+    letter-spacing: 2px;
+    text-align: right;
 }
 
 button {
     width: 80%;
+    text-align: center;
+    font-family: Playbill, Arial;
+    font-size: 160%;
+    letter-spacing: 2px;
+    font-weight: lighter;
+}
+
+#otsikko {
+    text-align: center;
+    font-size: 300%;
+    font-weight: lighter;
+    padding-bottom: 8px;
 }
 
 #ohjeet {
     line-height: 0.9;
     position: absolute;
-    bottom: 14%;
+    bottom: 10%;
     left: 3%;
     max-width: 66%;
 }
@@ -35,12 +46,18 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+#panostus {
+    width: 100%;
+}
+
 #rullat {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #voitot {
+    width: 100%;
     font-size: 75%;
 }
 
@@ -48,6 +65,8 @@ button {
     display: inline-block;
     width: 100px;
     height: 137px;
+    border: 2px solid black;
+    margin: 2px;
 }
 
 .voittokuvake {
@@ -55,5 +74,6 @@ button {
     width: 30px;
     height: 40px;
     position: relative;
-    top: 10px;
+    top: 12px;
+    border: 1px solid black;
 }

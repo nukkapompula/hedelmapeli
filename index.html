@@ -9,19 +9,20 @@
 
 <body>
 
-    <h1>Hyypiöpeli</h1>
+    <h1 id="otsikko">Hyypiöpeli</h1>
 
     <div id="pelikkuna">
 
         <div id="panostus">
             <p id="lompakko"></p>
             <p>Panoksesi: <input type="number" id="panoksesi">€</p>
-            <button type="submit" id="pelaa">Pelaa</button>
+            <button type="submit" id="pelaa" onclick="pelaa()">Pelaa</button>
             <p id="ohjeet">
-                Panossumma veloitetaan aina painaessasi <ins>Pelaa</ins>-painiketta. Jos varasi 
-                alittavat panoksen minimimäärän - yhden euron - peli on ohi! Näet oikealta laidalta 
-                millaisilla yhdistelmillä palkintoja voitetaan. Kun olet pelannut yhden erän, voit 
-                lukita haluamasi rullat ennen toista pyöräytystä yhdistelmiä kootaksesi.
+                Panossumma veloitetaan aina painaessasi Pelaa-painiketta, jolloin painikkeen viereiset 
+                potretit arvotaan uudelleen. Jos varasi alittavat panoksen minimimäärän - yhden euron - 
+                peli päättyy! Näet oikealta laidalta millaisilla kuvayhdistelmillä palkintoja voitetaan. 
+                Kun olet pelannut yhden erän, voit lukita haluamasi otokset ennen toista pyöräytystä 
+                yhdistelmiä kootaksesi.
             </p>
         </div>
 
