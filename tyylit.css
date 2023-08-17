@@ -13,6 +13,22 @@ h1 {
     font-weight: lighter;
 }
 
+input {
+    max-width: 60px;
+}
+
+button {
+    width: 80%;
+}
+
+#ohjeet {
+    line-height: 0.9;
+    position: absolute;
+    bottom: 14%;
+    left: 3%;
+    max-width: 66%;
+}
+
 #pelikkuna {
     width: 100%;
     display: grid;
@@ -22,6 +38,10 @@ h1 {
 #rullat {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#voitot {
+    font-size: 75%;
 }
 
 .rullakuvake {
@@ -34,4 +54,6 @@ h1 {
     display: inline-block;
     width: 30px;
     height: 40px;
+    position: relative;
+    top: 10px;
 }
