@@ -17,6 +17,10 @@ function pelaa(){
         document.getElementById("panoksesi").value = 1;
     } else {
         otsikko.innerHTML = "Oikein hyvä!"
+        for(indeksi=0; indeksi<4; indeksi++){
+            let luku = Math.round(Math.random()*4);
+            document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
+        }
     }
 }
 
