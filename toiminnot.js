@@ -16,7 +16,7 @@ function pelaa(){
     if(eraKaksi == false){
         panos = document.getElementById("panoksesi").value;
         if(panos < 1 || panos > saldo){
-            otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos."
+            otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
             otsikko.innerHTML = "Oikein hyvä!"
@@ -30,7 +30,29 @@ function pelaa(){
         }
     } else {
     // toinen pyöräytys
-        console.log("pelasit jo houkka yhden erän")
+        panos = document.getElementById("panoksesi").value;
+        if(panos < 1 || panos > saldo){
+            otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
+            document.getElementById("panoksesi").value = 1;
+        } else {
+            saldo -= panos;
+            lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
+            for(indeksi=1; indeksi<5; indeksi++){
+                luku = Math.round(Math.random()*4);
+                if(`lukittu${indeksi}` == "lukittu1" && lukittu1 == false){
+                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
+                }
+                if(`lukittu${indeksi}` == "lukittu2" && lukittu2 == false){
+                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
+                }
+                if(`lukittu${indeksi}` == "lukittu3" && lukittu3 == false){
+                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
+                }
+                if(`lukittu${indeksi}` == "lukittu4" && lukittu4 == false){
+                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
+                }
+            }
+        }
     }
 }
 
