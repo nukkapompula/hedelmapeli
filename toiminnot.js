@@ -24,6 +24,9 @@ function pelaa(){
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
             }
             voitonTarkistus();
+            for(indeksi=0; indeksi<4; indeksi++){
+                document.getElementById(`lukitse${indeksi}`).style.display = "block";
+            }
             eraKaksi = true;
         }
     } else {
@@ -40,6 +43,10 @@ function pelaa(){
                 }
             }
             voitonTarkistus();
+            for(indeksi=0; indeksi<4; indeksi++){
+                document.getElementById(`lukitse${indeksi}`).style.display = "none";
+            }
+            lukotAuki();
         }
     }
 }
@@ -109,4 +116,13 @@ function voitonTarkistus(){
         otsikko.innerHTML = "Himskatti, ei voittoa.";
     }
     lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
+}
+
+function lukotAuki(){
+    for(indeksi=0; indeksi<4; indeksi++){
+        document.getElementsByClassName("rullakuvake")[indeksi].style.border = "2px solid black";
+        document.getElementById(`lukitse${indeksi}`).innerHTML = "Lukitse";
+        lukossa[indeksi] = false;
+    }
+    eraKaksi = false;
 }

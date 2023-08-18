@@ -62,6 +62,10 @@ button {
     font-size: 75%;
 }
 
+#lukitse0, #lukitse1, #lukitse2, #lukitse3 {
+    display: none;
+}
+
 .rullakuvake {
     display: inline-block;
     width: 100px;
