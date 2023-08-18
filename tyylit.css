@@ -6,6 +6,7 @@ body {
     letter-spacing: 2px;
     font-weight: lighter;
     margin: 4px;
+    background-image: url("tausta.gif");
 }
 
 input {
@@ -14,6 +15,8 @@ input {
     font-size: 100%;
     letter-spacing: 2px;
     text-align: right;
+    border: 2px solid black;
+    border-radius: 23px;
 }
 
 button {
@@ -23,6 +26,9 @@ button {
     font-size: 160%;
     letter-spacing: 2px;
     font-weight: lighter;
+    border: 2px solid black;
+    border-radius: 33px;
+    background-color: white;
 }
 
 #otsikko {
@@ -33,7 +39,7 @@ button {
 }
 
 #ohjeet {
-    display: none;
+    /* display: none; */
     line-height: 0.9;
     position: absolute;
     bottom: 10%;
@@ -66,12 +72,17 @@ button {
     display: none;
 }
 
+#lukitse0:hover, #lukitse1:hover, #lukitse2:hover, #lukitse3:hover, #pelaa:hover, input:hover {
+    text-decoration: underline;
+}
+
 .rullakuvake {
     display: inline-block;
     width: 100px;
     height: 137px;
     border: 2px solid black;
     margin: 2px;
+    border-radius: 33px;
 }
 
 .voittokuvake {
@@ -81,4 +92,5 @@ button {
     position: relative;
     top: 12px;
     border: 1px solid black;
+    border-radius: 9px;
 }
