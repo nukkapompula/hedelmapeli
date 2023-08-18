@@ -1,15 +1,15 @@
 var saldo = 50;
 var panos = 0;
-var lukittu1 = false;
-var lukittu2 = false;
-var lukittu3 = false;
-var lukittu4 = false;
+var lukossa = [false, false, false, false]; // pelin 4 rullan lukitus
 var eraKaksi = false;
 var otsikko = document.getElementById("otsikko");
 var lompakko = document.getElementById("lompakko");
 
 lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
-document.getElementById("lukitse1").addEventListener("click", lukitse1);
+document.getElementById("lukitse0").addEventListener("click", lukitse);
+document.getElementById("lukitse1").addEventListener("click", lukitse);
+document.getElementById("lukitse2").addEventListener("click", lukitse);
+document.getElementById("lukitse3").addEventListener("click", lukitse);
 
 function pelaa(){
     // ensimmäinen pyöräytys
@@ -37,33 +37,25 @@ function pelaa(){
         } else {
             saldo -= panos;
             lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
-            for(indeksi=1; indeksi<5; indeksi++){
+            for(indeksi=0; indeksi<4; indeksi++){
                 luku = Math.round(Math.random()*4);
-                if(`lukittu${indeksi}` == "lukittu1" && lukittu1 == false){
-                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
-                }
-                if(`lukittu${indeksi}` == "lukittu2" && lukittu2 == false){
-                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
-                }
-                if(`lukittu${indeksi}` == "lukittu3" && lukittu3 == false){
-                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
-                }
-                if(`lukittu${indeksi}` == "lukittu4" && lukittu4 == false){
-                    document.getElementsByClassName("rullakuvake")[indeksi-1].src = `rulla${luku}.gif`;
+                if(lukossa[indeksi] == 0){
+                    document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
                 }
             }
         }
     }
 }
 
-function lukitse1(){
-    if(lukittu1 == true){
-        document.getElementsByClassName("rullakuvake")[0].style.border = "2px solid black";
-        document.getElementById("lukitse1").innerHTML = "Lukitse";
-        lukittu1 = false;
+function lukitse(event){
+    let kohde = Number(event.target.id[7]);
+    if(lukossa[kohde] == true){
+        document.getElementsByClassName("rullakuvake")[kohde].style.border = "2px solid black";
+        document.getElementById(`lukitse${kohde}`).innerHTML = "Lukitse";
+        lukossa[kohde] = false;
     } else if(eraKaksi == true){
-        document.getElementsByClassName("rullakuvake")[0].style.border = "2px dashed black";
-        document.getElementById("lukitse1").innerHTML = "Avaa";
-        lukittu1 = true;
+        document.getElementsByClassName("rullakuvake")[kohde].style.border = "2px dashed black";
+        document.getElementById(`lukitse${kohde}`).innerHTML = "Avaa";
+        lukossa[kohde] = true;
     }
 }
