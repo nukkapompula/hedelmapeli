@@ -1,4 +1,4 @@
-var saldo = 50;
+var saldo = 100;
 var panos = 0;
 var lukossa = [false, false, false, false]; // pelin 4 rullan lukitus
 var eraKaksi = false;
@@ -10,12 +10,14 @@ document.getElementById("lukitse0").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse1").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse2").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse3").addEventListener("click", lukitseTaiAvaa);
+document.getElementById("arvotaan").addEventListener("animationend", testi);
+
+function testi(){
+    document.getElementById("arvotaan").style.animation = "none";
+    console.log("guu");
+}
 
 function pelaa(){
-    // alustetaan rullien animaatiotilanne
-    for(indeksi=0; indeksi<4; indeksi++){
-        document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "none";
-    }
     // ensimmäinen pyöräytys
     if(eraKaksi == false){
         panos = document.getElementById("panoksesi").value;
@@ -23,10 +25,10 @@ function pelaa(){
             otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
+            document.getElementById("arvotaan").style.animation = "arpoo 0.8s linear 0s 1 normal";
             for(indeksi=0; indeksi<4; indeksi++){
                 let luku = Math.round(Math.random()*4);
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
-                document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.8s ease 0s 1 normal";
             }
             voitonTarkistus();
             for(indeksi=0; indeksi<4; indeksi++){
@@ -41,11 +43,11 @@ function pelaa(){
             otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
+            document.getElementById("arvotaan").style.animation = "arpoo 0.8s linear 0s 1 normal";
             for(indeksi=0; indeksi<4; indeksi++){
                 luku = Math.round(Math.random()*4);
-                if(lukossa[indeksi] == 0){
+                if(lukossa[indeksi] == false){
                     document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
-                    document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.8s ease 0s 1 normal";
                 }
             }
             voitonTarkistus();

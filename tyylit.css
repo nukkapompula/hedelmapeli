@@ -44,7 +44,7 @@ button {
 }
 
 #ohjeet {
-    /* display: none; */
+    display: none;
     line-height: 0.9;
     position: absolute;
     bottom: 10%;
@@ -100,4 +100,8 @@ button {
     border-radius: 9px;
 }
 
-/* animation: arpoo 1s ease 0s 1 normal; */
+#arvotaan {
+    visibility: hidden;
+}
+
+/* animation: arpoo 0.8s linear 0s 1 normal; */
