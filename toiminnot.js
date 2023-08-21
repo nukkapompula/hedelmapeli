@@ -12,6 +12,10 @@ document.getElementById("lukitse2").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse3").addEventListener("click", lukitseTaiAvaa);
 
 function pelaa(){
+    // alustetaan rullien animaatiotilanne
+    for(indeksi=0; indeksi<4; indeksi++){
+        document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "none";
+    }
     // ensimmäinen pyöräytys
     if(eraKaksi == false){
         panos = document.getElementById("panoksesi").value;
@@ -22,6 +26,7 @@ function pelaa(){
             for(indeksi=0; indeksi<4; indeksi++){
                 let luku = Math.round(Math.random()*4);
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
+                document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.8s ease 0s 1 normal";
             }
             voitonTarkistus();
             for(indeksi=0; indeksi<4; indeksi++){
@@ -40,6 +45,7 @@ function pelaa(){
                 luku = Math.round(Math.random()*4);
                 if(lukossa[indeksi] == 0){
                     document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
+                    document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.8s ease 0s 1 normal";
                 }
             }
             voitonTarkistus();
