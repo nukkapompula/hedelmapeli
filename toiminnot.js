@@ -10,12 +10,6 @@ document.getElementById("lukitse0").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse1").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse2").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse3").addEventListener("click", lukitseTaiAvaa);
-document.getElementById("arvotaan").addEventListener("animationend", testi);
-
-function testi(){
-    document.getElementById("arvotaan").style.animation = "none";
-    console.log("guu");
-}
 
 function pelaa(){
     // ensimmäinen pyöräytys
@@ -25,7 +19,7 @@ function pelaa(){
             otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
-            document.getElementById("arvotaan").style.animation = "arpoo 0.8s linear 0s 1 normal";
+            document.getElementById("panoksesi").value = 1;
             for(indeksi=0; indeksi<4; indeksi++){
                 let luku = Math.round(Math.random()*4);
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
@@ -43,7 +37,7 @@ function pelaa(){
             otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
-            document.getElementById("arvotaan").style.animation = "arpoo 0.8s linear 0s 1 normal";
+            document.getElementById("panoksesi").value = 1;
             for(indeksi=0; indeksi<4; indeksi++){
                 luku = Math.round(Math.random()*4);
                 if(lukossa[indeksi] == false){
@@ -121,7 +115,13 @@ function voitonTarkistus(){
         otsikko.innerHTML = `Voitit juuri ${10 * panos}€!`;
     } else {
         saldo -= panos;
-        otsikko.innerHTML = "Himskatti, ei voittoa.";
+        if(saldo < 1){
+            document.getElementById("pelikkuna").style.display = "none";
+            document.getElementById("peliOhikkuna").style.display = "block";
+            otsikko.innerHTML = "Peijakas!";
+        } else {
+            otsikko.innerHTML = "Himskatti, ei voittoa.";
+        }
     }
     lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
 }
