@@ -4,6 +4,7 @@ var lukossa = [false, false, false, false]; // pelin 4 rullan lukitus
 var eraKaksi = false;
 var otsikko = document.getElementById("otsikko");
 var lompakko = document.getElementById("lompakko");
+var voitto = false;
 
 lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
 document.getElementById("lukitse0").addEventListener("click", lukitseTaiAvaa);
@@ -24,13 +25,18 @@ function pelaa(){
                 let luku = Math.round(Math.random()*4);
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
             }
-            voitonTarkistus();
-            for(indeksi=0; indeksi<4; indeksi++){
-                document.getElementById(`lukitse${indeksi}`).style.display = "block";
+            // seuraava estää voittorivin lukitsemisen
+            if(voitonTarkistus() == false){
+                for(indeksi=0; indeksi<4; indeksi++){
+                    document.getElementById(`lukitse${indeksi}`).style.display = "block";
+                }
+                eraKaksi = true;
+            } else {
+                eraKaksi = false;
+                voitto = false;
             }
-            eraKaksi = true;
         }
-    } else {
+    } else if(eraKaksi == true){
     // toinen pyöräytys
         panos = document.getElementById("panoksesi").value;
         if(panos < 1 || panos > saldo){
@@ -61,7 +67,7 @@ function lukitseTaiAvaa(event){
         document.getElementById(`lukitse${kohde}`).innerHTML = "Lukitse";
         lukossa[kohde] = false;
     } else if(eraKaksi == true){
-        document.getElementsByClassName("rullakuvake")[kohde].style.border = "2px dashed black";
+        document.getElementsByClassName("rullakuvake")[kohde].style.border = "2px dotted black";
         document.getElementById(`lukitse${kohde}`).innerHTML = "Avaa";
         lukossa[kohde] = true;
     }
@@ -98,32 +104,43 @@ function voitonTarkistus(){
     if(vihreat == 4){
         saldo += 3 * panos;
         otsikko.innerHTML = `Voitit juuri ${3 * panos}€!`;
+        voitto = true;
     } else if(siniset == 4){
         saldo += 4 * panos;
         otsikko.innerHTML = `Voitit juuri ${4 * panos}€!`;
+        voitto = true;
     } else if(oranssit == 4){
         saldo += 5 * panos;
         otsikko.innerHTML = `Voitit juuri ${5 * panos}€!`;
+        voitto = true;
     } else if(turkoosit == 4){
         saldo += 6 * panos;
         otsikko.innerHTML = `Voitit juuri ${6 * panos}€!`;
+        voitto = true;
     } else if(punaiset == 3){
         saldo += 5 * panos;
         otsikko.innerHTML = `Voitit juuri ${5 * panos}€!`;
+        voitto = true;
     } else if(punaiset == 4){
         saldo += 10 * panos;
         otsikko.innerHTML = `Voitit juuri ${10 * panos}€!`;
+        voitto = true;
     } else {
+        voitto = false;
         saldo -= panos;
+        // pelin päättyminen varojen huvetessa
         if(saldo < 1){
             document.getElementById("pelikkuna").style.display = "none";
             document.getElementById("peliOhikkuna").style.display = "block";
             otsikko.innerHTML = "Peijakas!";
-        } else {
+        } else if(eraKaksi == true){
             otsikko.innerHTML = "Himskatti, ei voittoa.";
+        } else {
+            otsikko.innerHTML = "Samperi, ei voittoa. Voit nyt lukita kuvia!";
         }
     }
     lompakko.innerHTML = `Lompakostasi löytyy rahaa ${saldo}€.`;
+    return voitto;
 }
 
 function lukotAuki(){
