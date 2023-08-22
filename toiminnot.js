@@ -12,6 +12,19 @@ document.getElementById("lukitse1").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse2").addEventListener("click", lukitseTaiAvaa);
 document.getElementById("lukitse3").addEventListener("click", lukitseTaiAvaa);
 
+document.getElementsByClassName("rullakuvake")[0].addEventListener("animationend", animaatiohi);
+document.getElementsByClassName("rullakuvake")[1].addEventListener("animationend", animaatiohi);
+document.getElementsByClassName("rullakuvake")[2].addEventListener("animationend", animaatiohi);
+document.getElementsByClassName("rullakuvake")[3].addEventListener("animationend", animaatiohi);
+
+function animaatiohi(){
+    otsikko.style.visibility = "visible";
+    lompakko.style.visibility = "visible";
+    for(indeksi=0; indeksi<4; indeksi++){
+        document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "none";
+    }
+}
+
 function pelaa(){
     // ensimmäinen pyöräytys
     if(eraKaksi == false){
@@ -21,9 +34,12 @@ function pelaa(){
             document.getElementById("panoksesi").value = 1;
         } else {
             document.getElementById("panoksesi").value = 1;
+            otsikko.style.visibility = "hidden";
+            lompakko.style.visibility = "hidden";
             for(indeksi=0; indeksi<4; indeksi++){
                 let luku = Math.round(Math.random()*4);
                 document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
+                document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.7s ease-in-out 0s 1 normal";
             }
             // seuraava estää voittorivin lukitsemisen
             if(voitonTarkistus() == false){
@@ -44,10 +60,13 @@ function pelaa(){
             document.getElementById("panoksesi").value = 1;
         } else {
             document.getElementById("panoksesi").value = 1;
+            otsikko.style.visibility = "hidden";
+            lompakko.style.visibility = "hidden";
             for(indeksi=0; indeksi<4; indeksi++){
                 luku = Math.round(Math.random()*4);
                 if(lukossa[indeksi] == false){
                     document.getElementsByClassName("rullakuvake")[indeksi].src = `rulla${luku}.gif`;
+                    document.getElementsByClassName("rullakuvake")[indeksi].style.animation = "arpoo 0.7s ease-in-out 0s 1 normal";
                 }
             }
             voitonTarkistus();
@@ -103,27 +122,27 @@ function voitonTarkistus(){
     // tarkistetaan osumien perusteella voitot
     if(vihreat == 4){
         saldo += 3 * panos;
-        otsikko.innerHTML = `Voitit juuri ${3 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri huimat ${3 * panos}€!`;
         voitto = true;
     } else if(siniset == 4){
         saldo += 4 * panos;
-        otsikko.innerHTML = `Voitit juuri ${4 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri sievoiset ${4 * panos}€!`;
         voitto = true;
     } else if(oranssit == 4){
         saldo += 5 * panos;
-        otsikko.innerHTML = `Voitit juuri ${5 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri rapiat ${5 * panos}€!`;
         voitto = true;
     } else if(turkoosit == 4){
         saldo += 6 * panos;
-        otsikko.innerHTML = `Voitit juuri ${6 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri huikeat ${6 * panos}€!`;
         voitto = true;
     } else if(punaiset == 3){
         saldo += 5 * panos;
-        otsikko.innerHTML = `Voitit juuri ${5 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri makeat ${5 * panos}€!`;
         voitto = true;
     } else if(punaiset == 4){
         saldo += 10 * panos;
-        otsikko.innerHTML = `Voitit juuri ${10 * panos}€!`;
+        otsikko.innerHTML = `Voitit juuri uskomattomat ${10 * panos}€!`;
         voitto = true;
     } else {
         voitto = false;
@@ -132,6 +151,7 @@ function voitonTarkistus(){
         if(saldo < 1){
             document.getElementById("pelikkuna").style.display = "none";
             document.getElementById("peliOhikkuna").style.display = "block";
+            otsikko.style.visibility = "visible";
             otsikko.innerHTML = "Peijakas!";
         } else if(eraKaksi == true){
             otsikko.innerHTML = "Himskatti, ei voittoa.";

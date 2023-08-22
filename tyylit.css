@@ -1,3 +1,8 @@
+@keyframes arpoo {
+    0% {transform: scale(0.0, 0.0) rotate(0deg);}
+    100% {transform: scale(1.0, 1.0) rotate(-1080deg);}
+}
+
 body {
     text-align: center;
     font-family: Playbill, Arial;
@@ -41,6 +46,7 @@ button {
 }
 
 #ohjeet {
+    display: none;
     line-height: 0.9;
     position: absolute;
     bottom: 10%;
