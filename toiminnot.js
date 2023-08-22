@@ -30,11 +30,13 @@ function pelaa(){
     if(eraKaksi == false){
         panos = document.getElementById("panoksesi").value;
         if(panos < 1 || panos > saldo){
+            otsikko.style.animation = "none";
             otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
             document.getElementById("panoksesi").value = 1;
             otsikko.style.visibility = "hidden";
+            otsikko.style.animation = "none";
             lompakko.style.visibility = "hidden";
             for(indeksi=0; indeksi<4; indeksi++){
                 let luku = Math.round(Math.random()*4);
@@ -56,11 +58,18 @@ function pelaa(){
     // toinen pyöräytys
         panos = document.getElementById("panoksesi").value;
         if(panos < 1 || panos > saldo){
-            otsikko.innerHTML = "Ole hyvä ja aseta kelvollinen panos.";
+            otsikko.style.animation = "none";
+            otsikko.innerHTML = "Ole kiltti ja aseta kelvollinen panos.";
             document.getElementById("panoksesi").value = 1;
         } else {
+            // katsotaan ettei kaikki rullat ole lukittuna
+            if(lukossa[0] == true && lukossa[1] == true && lukossa[2] == true && lukossa[3] == true){
+                otsikko.innerHTML = "Pidä vähintään yksi rulla vapaana, kiitos.";
+                return;
+            }
             document.getElementById("panoksesi").value = 1;
             otsikko.style.visibility = "hidden";
+            otsikko.style.animation = "none";
             lompakko.style.visibility = "hidden";
             for(indeksi=0; indeksi<4; indeksi++){
                 luku = Math.round(Math.random()*4);
@@ -123,26 +132,32 @@ function voitonTarkistus(){
     if(vihreat == 4){
         saldo += 3 * panos;
         otsikko.innerHTML = `Voitit juuri huimat ${3 * panos}€!`;
+        otsikko.style.animation = "hytkyy 2s ease-in-out 0s infinite normal";
         voitto = true;
     } else if(siniset == 4){
         saldo += 4 * panos;
         otsikko.innerHTML = `Voitit juuri sievoiset ${4 * panos}€!`;
+        otsikko.style.animation = "hytkyy 1.8s ease-in-out 0s infinite normal";
         voitto = true;
     } else if(oranssit == 4){
         saldo += 5 * panos;
         otsikko.innerHTML = `Voitit juuri rapiat ${5 * panos}€!`;
+        otsikko.style.animation = "hytkyy 1.6s ease-in-out 0s infinite normal";
         voitto = true;
     } else if(turkoosit == 4){
         saldo += 6 * panos;
         otsikko.innerHTML = `Voitit juuri huikeat ${6 * panos}€!`;
+        otsikko.style.animation = "hytkyy 1.4s ease-in-out 0s infinite normal";
         voitto = true;
     } else if(punaiset == 3){
         saldo += 5 * panos;
         otsikko.innerHTML = `Voitit juuri makeat ${5 * panos}€!`;
+        otsikko.style.animation = "hytkyy 1.2s ease-in-out 0s infinite normal";
         voitto = true;
     } else if(punaiset == 4){
         saldo += 10 * panos;
         otsikko.innerHTML = `Voitit juuri uskomattomat ${10 * panos}€!`;
+        otsikko.style.animation = "hytkyy 1s ease-in-out 0s infinite normal";
         voitto = true;
     } else {
         voitto = false;
@@ -152,6 +167,7 @@ function voitonTarkistus(){
             document.getElementById("pelikkuna").style.display = "none";
             document.getElementById("peliOhikkuna").style.display = "block";
             otsikko.style.visibility = "visible";
+            otsikko.style.animation = "hytkyy 3s ease-in-out 0s infinite normal";
             otsikko.innerHTML = "Peijakas!";
         } else if(eraKaksi == true){
             otsikko.innerHTML = "Himskatti, ei voittoa.";
