@@ -52,12 +52,8 @@ button {
 }
 
 #ohjeet {
-    /* display: none; */
+    display: none;
     line-height: 0.9;
-    position: absolute;
-    bottom: 10%;
-    left: 3%;
-    max-width: 66%;
 }
 
 #pelikkuna {
@@ -86,7 +82,7 @@ button {
 }
 
 #lukitse0:hover, #lukitse1:hover, #lukitse2:hover, #lukitse3:hover, #pelaa:hover, 
-input:hover, #aloitaAlusta:hover {
+input:hover, #aloitaAlusta:hover, #piilotaOhjeet:hover, #naytaOhjeet:hover {
     text-decoration: underline;
 }
 
@@ -96,6 +92,14 @@ input:hover, #aloitaAlusta:hover {
 
 #aloitaAlusta {
     width: 40%;
+}
+
+#naytaOhjeet {
+    margin-top: 12px;
+}
+
+#piilotaOhjeet {
+    width: 70%;
 }
 
 .rullakuvake {

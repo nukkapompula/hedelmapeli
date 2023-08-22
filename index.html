@@ -18,19 +18,24 @@
         <button type="submit" id="aloitaAlusta" onclick="location.reload()">Aloita alusta</button>
     </div>
 
+    <div id="ohjeet">
+        <p>
+            Panossumma veloitetaan aina painaessasi Pelaa-painiketta, jolloin keskellä komeilevat 
+            potretit arvotaan. Jos varasi alittavat panoksen minimimäärän - yhden euron - peli päättyy! 
+            Näet oikealta laidalta millaisilla kuvayhdistelmillä palkintoja voitetaan. Kun olet pyöräyttänyt 
+            kuvia kerran, voit lukita haluamasi otokset ennen toista kierrosta himoittuja yhdistelmiä 
+            kootaksesi.
+        </p>
+        <button type="submit" id="piilotaOhjeet" onclick="piilotaOhjeet()">Piilota ohjeet ja käy keventämään lompakkoasi</button>
+    </div>
+
     <div id="pelikkuna">
 
         <div id="panostus">
             <p id="lompakko"></p>
             <p>Panoksesi: <input type="number" id="panoksesi">€</p>
             <button type="submit" id="pelaa" onclick="pelaa()">Pelaa</button>
-            <p id="ohjeet">
-                Panossumma veloitetaan aina painaessasi Pelaa-painiketta, jolloin keskellä komeilevat 
-                potretit arvotaan. Jos varasi alittavat panoksen minimimäärän - yhden euron - peli päättyy! 
-                Näet oikealta laidalta millaisilla kuvayhdistelmillä palkintoja voitetaan. Kun olet pyöräyttänyt 
-                kuvia kerran, voit lukita haluamasi otokset ennen toista kierrosta himoittuja yhdistelmiä 
-                kootaksesi.
-            </p>
+            <button type="submit" id="naytaOhjeet" onclick="naytaOhjeet()">Näytä ohjeet</button>
         </div>
 
         <div id="rullat">

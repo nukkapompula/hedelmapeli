@@ -187,3 +187,17 @@ function lukotAuki(){
     }
     eraKaksi = false;
 }
+
+function naytaOhjeet(){
+    otsikko.innerHTML = "Hyypiöpeli";
+    otsikko.style.animation = "none";
+    document.getElementById("pelikkuna").style.display = "none";
+    document.getElementById("ohjeet").style.display = "block";
+}
+
+function piilotaOhjeet(){
+    otsikko.innerHTML = "Hyypiöpeli";
+    otsikko.style.animation = "none";
+    document.getElementById("ohjeet").style.display = "none";
+    document.getElementById("pelikkuna").style.display = "grid";
+}
