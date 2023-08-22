@@ -111,19 +111,19 @@ function voitonTarkistus(){
     // lasketaan kunkin värin osumien määrä
     for(indeksi=0; indeksi<4; indeksi++){
         let pysahtynytRulla = document.getElementsByClassName("rullakuvake")[indeksi].src.toString();
-        if(pysahtynytRulla.substring(22, 32) == "rulla0.gif"){
+        if(pysahtynytRulla.endsWith("rulla0.gif")){
             vihreat += 1;
         }
-        if(pysahtynytRulla.substring(22, 32) == "rulla1.gif"){
+        if(pysahtynytRulla.endsWith("rulla1.gif")){
             siniset += 1;
         }
-        if(pysahtynytRulla.substring(22, 32) == "rulla2.gif"){
+        if(pysahtynytRulla.endsWith("rulla2.gif")){
             oranssit += 1;
         }
-        if(pysahtynytRulla.substring(22, 32) == "rulla3.gif"){
+        if(pysahtynytRulla.endsWith("rulla3.gif")){
             turkoosit += 1;
         }
-        if(pysahtynytRulla.substring(22, 32) == "rulla4.gif"){
+        if(pysahtynytRulla.endsWith("rulla4.gif")){
             punaiset += 1;
         }
     }

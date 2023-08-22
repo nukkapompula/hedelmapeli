@@ -52,6 +52,7 @@ button {
 }
 
 #ohjeet {
+    /* display: none; */
     line-height: 0.9;
     position: absolute;
     bottom: 10%;
